@@ -1,7 +1,7 @@
 # This file provides some plotting functions that will help to visualize the results the model returns.
 from matplotlib import pyplot as plt
 import numpy as np
-from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d import Axes3D # NOTE TO FUTURE DEVS: This line is required
 
 
 def plot_3d_ball_path(ball_results, ball_labels, viewType=None, ball_no_spin_results=None, pitch=False, softball=False):

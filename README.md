@@ -9,6 +9,19 @@ hit, and also includes plotting functions that are helpful in visualizing the me
 $ pip install ballflight
 ```
 
+## Command Line Instructions
+For a full list of commands type
+```
+$ python ballflight --help
+```
+To get the results of a particular pitch:
+```
+$ python ballflight --releaseSpeed 88.4 --spinRate 2589 --breakSpin 2589 --spinDirection 12:33
+```
+To plot the results of a particular pitch, add a `-p` option to the end of your command line:
+```
+$ python ballflight --releaseSpeed 88.4 --spinRate 2589 --breakSpin 2589 --spinDirection 12:33 -p
+```
 
 ## Usage Instructions
 
@@ -30,7 +43,8 @@ pitch_result = PitchResult.throw_ball(pitch_options)
 
 
 ## Release History
-
+- v0.1.1, October 19, 2018
+  - __main__ method for ball flight with command line args.
 - v0.1.0, August 9, 2018
   - Initial Release
 

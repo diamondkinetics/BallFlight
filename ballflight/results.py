@@ -67,7 +67,7 @@ class PitchResults(object):
 
             x_direction_break = final_position_spun[0]-final_position_unspun[0]
             z_direction_break = final_position_spun[2]-final_position_unspun[2]
-            pitch_break = [-x_direction_break, z_direction_break]
+            pitch_break = [-x_direction_break[0], z_direction_break[0]]
 
         else:  # if the throw is not a pitch, we allow the flight to continue until it hits the ground, at which point
             #        we report break in the x and y, where x is deviation from the center line (positive x would be
@@ -76,26 +76,30 @@ class PitchResults(object):
             final_position_unspun = no_spin_flight_results.flight_position[-1]
             x_direction_break = final_position_spun[0] - final_position_unspun[0]
             y_direction_break = final_position_spun[1] - final_position_unspun[1]
-            pitch_break = [-x_direction_break, y_direction_break]
+            pitch_break = [-x_direction_break[0], y_direction_break[0]]
 
-        pitch_result.position_of_pitch = spin_flight_results.flight_position
-        pitch_result.position_of_nospin_pitch = no_spin_flight_results.flight_position
+        pitch_result.position_of_pitch = spin_flight_results
+        pitch_result.position_of_nospin_pitch = no_spin_flight_results
         pitch_result.pitch_break = pitch_break
 
+        return pitch_result
+
+
+    @classmethod
+    def plot_results(cls, pitch_result, pitch_options):
         # Plotting Functions
         if pitch_options.playType == 'SLOW_PITCH_SOFTBALL' or \
-                pitch_options.playType == 'FAST_PITCH_SOFTBALL':
+                        pitch_options.playType == 'FAST_PITCH_SOFTBALL':
             softball = True
         else:
             softball = False
-        bfp.plot_3d_ball_path([spin_flight_results], [''], None, [no_spin_flight_results],
+
+        bfp.plot_3d_ball_path([pitch_result.position_of_pitch], [''], None, [pitch_result.position_of_nospin_pitch],
                               pitch_options.pitch, softball)
 
         if pitch_options.pitch:
-            bfp.plot_pitches_in_zone([spin_flight_results], [''], pitch_options.plateDistance, [no_spin_flight_results],
+            bfp.plot_pitches_in_zone([pitch_result.position_of_pitch], [''], pitch_options.plateDistance, [pitch_result.position_of_nospin_pitch],
                                      softball)
-
-        return pitch_result
 
 
 class SwingResults(object):

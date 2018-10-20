@@ -6,7 +6,7 @@ import numpy as np
 
 
 class PitchOptions(object):
-    def __init__(self, play_type, release_speed, release_spin_rate, release_spin_axis, release_lauch_angle,
+    def __init__(self, play_type, release_speed, release_spin_rate, release_spin_axis, release_launch_angle,
                  release_heading_angle, pitch=True):
         self.playType = play_type  # must be all caps "FAST_PITCH_SOFTBALL" or "SLOW_PITCH_SOFTBALL" or "BASEBALL"
         self.ballMass = None
@@ -16,7 +16,7 @@ class PitchOptions(object):
         self.releaseSpeed = release_speed  # in MPH
         self.releaseSpinRate = release_spin_rate  # in RPM
         self.releaseSpinAxis = release_spin_axis  # a 1x3 unit vector of the spin axis
-        self.releaseLaunchAngle = release_lauch_angle  # in degrees
+        self.releaseLaunchAngle = release_launch_angle  # in degrees
         self.releaseHeadingAngle = release_heading_angle  # in degrees
         self.pitch = pitch  # Boolean that indicates whether the ball thrown was a pitch, the default being that it was
 
