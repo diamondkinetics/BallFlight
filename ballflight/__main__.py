@@ -35,17 +35,19 @@ def direction_to_axis(spin_direction, spin_efficiency):
     x = np.sin(angle)
     z = -np.cos(angle)
 
-    term = np.square(1 - spin_efficiency)
-    numerator = term * (np.square(x) + np.square(z))
-    y = np.sqrt(numerator / (1 - term))
+    # term = np.square(1 - spin_efficiency**2)
+    # numerator = term * 1
+    y = np.sqrt(np.square(1.0/spin_efficiency)-1.0)
 
     return np.array([x, y, z]) / np.linalg.norm([x, y, z])
 
 
 def main(args):
     play_type = "BASEBALL" if not args.fastPitch else "FAST_PITCH_SOFTBALL"
+
     spin_efficiency = args.breakSpin / args.spinRate
     spin_axis = direction_to_axis(args.spinDirection, spin_efficiency)
+
     pitch_options = PitchOptions(
         play_type=play_type,
         release_speed=args.releaseSpeed,
