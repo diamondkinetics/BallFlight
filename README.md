@@ -64,8 +64,7 @@ MIT (see `LICENSE` for more information).
 The following works were consulted in the creation of this model.
 PRIMARY SOURCES CONSULTED:
 1. Baseball-bat collisions and the resulting trajectories of spinning balls -- Robert G. Watts and Steven Baroni
-2. How to hit home runs: Optimum baseball bat swing parameters for maximum range trajectories -- Gregory S. Sawicki,
-    Mont Hubbard, and William J. Stronge
+2. [How to hit home runs: Optimum baseball bat swing parameters for maximum range trajectories -- Gregory S. Sawicki, Mont Hubbard, and William J. Stronge](https://pdfs.semanticscholar.org/3311/8293e2a5f7fadde1cbdc6c5a9a67b10706fa.pdf)
 3. Spin of a batted baseball -- Alan M. Nathan, Jonas Cantakos, Russ Kesman, Biju Mathew, Wes Lukash
     http://baseball.physics.illinois.edu/ProcediaEngineering34Spin.pdf
 4. Aerodynamic drag crisis and its possible effect on the flight of baseballs -- Cliff Frolich
@@ -76,17 +75,16 @@ PRIMARY SOURCES CONSULTED:
     and Lloyd Smith
 
 OTHER SOURCES:
- Dynamics of the baseball-ball collision -- Alan M. Nathan
- Comment on Source 2 (Robert Adair) and Reply to the Comment (Sawicki, Hubbard, Stronge)
- The effect of spin on the flight of batted baseballs - A. F. Rex
- The effect of spin on the flight of a baseball - Alan M. Nathan
- The physics of baseball - Robert Adair
- The effects of surface roughness and tunnel blockage on the flow past spheres -- Elmar Achenbach
- Determining aerodynamic properties of sports balls in situ -- Jeffrey Kensrud
- Observed drag crisis on a sphere in flowing He I and He II -- Michael R. Smith, David K. Hilton, Steven W. Van Sciver
- Baseball (ball) - https://en.wikipedia.org/wiki/Baseball_(ball)
- Coefficient of Restitution: A Comparison of Major League and Little League Baseballs -- Cameron Wallace
-           http://cssf.usc.edu/History/2008/Projects/J1935.pdf
- Softball - https://en.wikipedia.org/wiki/Softball
- NCAA Softball Rules - http://fs.ncaa.org/Docs/stats/Stats_Manuals/Softball/Softball_Rules.pdf
+- Dynamics of the baseball-ball collision -- Alan M. Nathan
+- Comment on Source 2 (Robert Adair) and Reply to the Comment (Sawicki, Hubbard, Stronge)
+- The effect of spin on the flight of batted baseballs - A. F. Rex
+- The effect of spin on the flight of a baseball - Alan M. Nathan
+- The physics of baseball - Robert Adair
+- The effects of surface roughness and tunnel blockage on the flow past spheres -- Elmar Achenbach
+- Determining aerodynamic properties of sports balls in situ -- Jeffrey Kensrud
+- Observed drag crisis on a sphere in flowing He I and He II -- Michael R. Smith, David K. Hilton, Steven W. Van Sciver
+- Baseball (ball) - https://en.wikipedia.org/wiki/Baseball_(ball)
+- [Coefficient of Restitution: A Comparison of Major League and Little League Baseballs -- Cameron Wallace](http://cssf.usc.edu/History/2008/Projects/J1935.pdf)
+- Softball - https://en.wikipedia.org/wiki/Softball
+- NCAA Softball Rules - http://fs.ncaa.org/Docs/stats/Stats_Manuals/Softball/Softball_Rules.pdf
 
