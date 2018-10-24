@@ -65,8 +65,7 @@ The following works were consulted in the creation of this model.
 PRIMARY SOURCES CONSULTED:
 1. Baseball-bat collisions and the resulting trajectories of spinning balls -- Robert G. Watts and Steven Baroni
 2. [How to hit home runs: Optimum baseball bat swing parameters for maximum range trajectories -- Gregory S. Sawicki, Mont Hubbard, and William J. Stronge](https://pdfs.semanticscholar.org/3311/8293e2a5f7fadde1cbdc6c5a9a67b10706fa.pdf)
-3. Spin of a batted baseball -- Alan M. Nathan, Jonas Cantakos, Russ Kesman, Biju Mathew, Wes Lukash
-    http://baseball.physics.illinois.edu/ProcediaEngineering34Spin.pdf
+3. [Spin of a batted baseball -- Alan M. Nathan, Jonas Cantakos, Russ Kesman, Biju Mathew, Wes Lukash](http://baseball.physics.illinois.edu/ProcediaEngineering34Spin.pdf)
 4. Aerodynamic drag crisis and its possible effect on the flight of baseballs -- Cliff Frolich
 5. List of moments of inertia -- https://en.wikipedia.org/wiki/List_of_moments_of_inertia
 6. Personal Correspondence with Mont Hubbard
