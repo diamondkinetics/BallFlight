@@ -43,17 +43,18 @@ class PitchResults(object):
 
         ball_flight_initial_conditions = BallFlightInitialConditions.from_pitched_ball(ball_pitched, init_position)
 
-        spin_flight_results = ball_flight_initial_conditions.process(0.01)
+        spin_flight_results = ball_flight_initial_conditions.process(0.0001)
         # Note: a time step interval of 0.01 seconds was chosen here arbitrarily as a time that provided a sufficient
         #       yet not excessive number of data points.
 
-        no_spin_flight_results = ball_flight_initial_conditions.process_no_spin(0.01)
+        no_spin_flight_results = ball_flight_initial_conditions.process_no_spin(0.0001)
 
         # *********** Break ***********
         if pitch_options.pitch:  # if the throw has been specified as a pitch, we terminate the flight at the plate
             #                       distance and calculate break in the vertical and horizontal directions in terms of
             #                       the strike zone ([2, 3] would mean two inches right and 3 inches up.
-            flight_distance = pitch_options.plateDistance - 1.524 - 0.4318  # we subtract out an average extension
+            # flight_distance = pitch_options.plateDistance - 1.524 - 0.4318  # we subtract out an average extension
+            flight_distance = 14
             #                                                                   (5ft) and plate length because
             #                                                                   plate-to-mound measurements are from
             #                                                                   the plate apex, and we care about where

@@ -387,6 +387,7 @@ class BallFlightInitialConditions(PitchedBall):
         else:
             omega = np.multiply(spin_rate, spin_axis)
             # creating a vector with magnitude of spin rate in direction of axis
+            #TODO: confirm the equation, replace spin_rate to be effective spin rate for coeff of lift
             coeff_of_lift = cls._coefficient_of_lift(velocity, spin_rate, radius)
             magnus_mag = coeff_of_lift * 0.5 * AIR_DENSITY * area * np.asscalar(np.matmul(np.transpose(velocity),
                                                                                           velocity))
