@@ -43,11 +43,11 @@ class PitchResults(object):
 
         ball_flight_initial_conditions = BallFlightInitialConditions.from_pitched_ball(ball_pitched, init_position)
 
-        spin_flight_results = ball_flight_initial_conditions.process(0.0001)
-        # Note: a time step interval of 0.01 seconds was chosen here arbitrarily as a time that provided a sufficient
+        spin_flight_results = ball_flight_initial_conditions.process(0.001)
+        # Note: a time step interval of 0.001 seconds was chosen here arbitrarily as a time that provided a sufficient
         #       yet not excessive number of data points.
 
-        no_spin_flight_results = ball_flight_initial_conditions.process_no_spin(0.0001)
+        no_spin_flight_results = ball_flight_initial_conditions.process_no_spin(0.001)
 
         # *********** Break ***********
         if pitch_options.pitch:  # if the throw has been specified as a pitch, we terminate the flight at the plate
