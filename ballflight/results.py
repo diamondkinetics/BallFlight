@@ -53,8 +53,7 @@ class PitchResults(object):
         if pitch_options.pitch:  # if the throw has been specified as a pitch, we terminate the flight at the plate
             #                       distance and calculate break in the vertical and horizontal directions in terms of
             #                       the strike zone ([2, 3] would mean two inches right and 3 inches up.
-            # flight_distance = pitch_options.plateDistance - 1.524 - 0.4318  # we subtract out an average extension
-            flight_distance = 14
+            flight_distance = pitch_options.plateDistance - 1.524 - 0.4318  # we subtract out an average extension
             #                                                                   (5ft) and plate length because
             #                                                                   plate-to-mound measurements are from
             #                                                                   the plate apex, and we care about where

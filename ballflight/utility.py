@@ -57,46 +57,52 @@ def break_from_velo_and_spin(direction, velo, spin_rate):
 
 def write_to_file(direction, velo_range, spin_range, horiz_breaks, vertical_breaks):
     with open(direction.replace(":", "") + ".csv", "w") as f:
-        f.write(direction + "\n")
-        velo_list = "," + ",,".join(map(str, velo_range[0]))
-        horiz_vert = "," + ("(H),(V)," * len(velo_range[0]))
-        f.write(velo_list + "\n")
+        f.write("Spin Direction @ " + direction + ", Spin Rate\n")
+        spin_list = "," + ",,".join(map(str, spin_range[0]))
+        horiz_vert = "Release Velocity," + ("(H),(V)," * len(velo_range[0]))
+        f.write(spin_list + "\n")
         f.write(horiz_vert + " \n")
         for i in range(velo_range.shape[0]):
-            f.write(str(spin_range[i][0]) + ",")
+            f.write(str(velo_range[i][0]) + ",")
             for j in range(velo_range.shape[1]):
                 f.write(str(horiz_breaks[i][j]) + "," + str(vertical_breaks[i][j]) + ",")
             f.write("\n")
 
 
-if __name__ == "__main__":
-    direction = "6:30"
-    velo_range = np.arange(70, 95, 1)
+def for_direction(direction, plot):
+    velo_range = np.arange(60, 95, 1)
     spin_range = np.arange(1000, 3000, 100)
-    all_breaks = [break_from_velo_and_spin(direction, velo, spin) for spin in np.nditer(spin_range) for velo in
-         np.nditer(velo_range)]
+    all_breaks = [break_from_velo_and_spin(direction, velo, spin) for velo in np.nditer(velo_range) for spin in np.nditer(spin_range)]
     horiz_breaks, vertical_breaks = zip(*all_breaks)
-    velo_range, spin_range = np.meshgrid(velo_range, spin_range)
+    spin_range, velo_range = np.meshgrid(spin_range, velo_range)
     vertical_breaks = np.array(vertical_breaks).reshape(velo_range.shape)
     horiz_breaks = np.array(horiz_breaks).reshape(velo_range.shape)
 
     write_to_file(direction, velo_range, spin_range, horiz_breaks, vertical_breaks)
 
-    fig = plt.figure()
-    ax = fig.gca(projection='3d')
-    ax.set_title("Vertical Break vs Velo and Spin Rate")
-    ax.set_xlabel('Velocity (mph)')
-    ax.set_ylabel('Spin Rate (RPM)')
+    if plot:
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
+        ax.set_title("Vertical Break vs Velo and Spin Rate")
+        ax.set_xlabel('Velocity (mph)')
+        ax.set_ylabel('Spin Rate (RPM)')
 
-    # Plot the surface.
-    surf = ax.plot_surface(velo_range, spin_range, vertical_breaks, cmap=cm.coolwarm,
-                           linewidth=0, antialiased=False)
+        # Plot the surface.
+        surf = ax.plot_surface(velo_range, spin_range, vertical_breaks, cmap=cm.coolwarm,
+                               linewidth=0, antialiased=False)
 
-    # Customize the z axis.
-    ax.zaxis.set_major_locator(LinearLocator(10))
-    ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+        # Customize the z axis.
+        ax.zaxis.set_major_locator(LinearLocator(10))
+        ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
-    # Add a color bar which maps values to colors.
-    fig.colorbar(surf, shrink=0.5, aspect=5)
+        # Add a color bar which maps values to colors.
+        fig.colorbar(surf, shrink=0.5, aspect=5)
 
-    plt.show()
+        plt.show()
+
+
+if __name__ == "__main__":
+    for hour in range(1, 13):
+        for minutes in ["00", "30"]:
+            print str(hour)+":"+minutes
+            for_direction(str(hour)+":"+minutes, False)
