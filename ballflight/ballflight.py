@@ -345,25 +345,29 @@ class BallFlightInitialConditions(PitchedBall):
         return air_drag_accel
 
     @classmethod
-    def _coefficient_of_lift(cls, velocity, spin_rate, radius):
+    def _coefficient_of_lift(cls, velocity, eff_spin_rate, radius, method ='NATHON'):
         """
         This is a helper function for flight_model.
         :param velocity: ball's velocity (3x1 vector) [m/s]
-        :param spin_rate: scalar value of ball's spin rate [rad]
+        :param eff_spin_rate: scalar value of ball's spin rate [rad/s]
         :param radius: ball's radius [m]
+        :method: 'NATHON' or 'SAWICKI': different way for CL calculation
         :return: coefficient_of_lift: a scalar value
         """
-        spin_parameter_num = radius * spin_rate
+        spin_parameter_num = radius * eff_spin_rate
         spin_parameter_den = la.norm(velocity)
         if spin_parameter_den == 0:
             spin_parameter = 0
         else:
             spin_parameter = spin_parameter_num / spin_parameter_den
 
-        if spin_parameter <= 0.1:
-            coeff_of_lift = 1.5 * spin_parameter
-        else:
-            coeff_of_lift = 0.09 + 0.6 * spin_parameter
+        if method == 'NATHON':
+            coeff_of_lift = spin_parameter/(0.4 + 2.32*spin_parameter)
+        elif method == 'SAWICKI':
+            if spin_parameter <= 0.1:
+                coeff_of_lift = 1.5 * spin_parameter
+            else:
+                coeff_of_lift = 0.09 + 0.6 * spin_parameter
 
         # equation obtained from Source 2 listed in the README
 
@@ -385,10 +389,14 @@ class BallFlightInitialConditions(PitchedBall):
             # want to avoid dividing by zero in the case of no spin
             magn_accel = np.array([[0.], [0.], [0.]])
         else:
+            # get transverse component of spin
+            spin_axis_parallel = np.dot(spin_axis, velocity.reshape(3)) * velocity.reshape(3) / (np.linalg.norm(velocity)**2)
+            spin_axis_transverse = spin_axis - spin_axis_parallel
+            eff_spin_rate = np.linalg.norm(spin_axis_transverse)*spin_rate
+
             omega = np.multiply(spin_rate, spin_axis)
             # creating a vector with magnitude of spin rate in direction of axis
-            #TODO: confirm the equation, replace spin_rate to be effective spin rate for coeff of lift
-            coeff_of_lift = cls._coefficient_of_lift(velocity, spin_rate, radius)
+            coeff_of_lift = cls._coefficient_of_lift(velocity, eff_spin_rate, radius, method='NATHON')
             magnus_mag = coeff_of_lift * 0.5 * AIR_DENSITY * area * np.asscalar(np.matmul(np.transpose(velocity),
                                                                                           velocity))
             # magnitude of the magnus force in each direction
